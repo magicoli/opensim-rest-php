@@ -1,6 +1,6 @@
 # OpenSimulator REST PHP library and command-line client
 
-![Version 1.0.3](https://badgen.net/badge/Version/1.0.3/999999) ![Stable 1.0.3](https://badgen.net/badge/Stable/1.0.3/00aa00) ![Requires PHP 5.7](https://badgen.net/badge/PHP/5.7/7884bf) ![License AGPLv3](https://badgen.net/badge/License/AGPLv3/552b55)
+![Version 1.0.4](https://badgen.net/badge/Version/1.0.4/999999) ![Stable 1.0.3](https://badgen.net/badge/Stable/1.0.3/00aa00) ![Requires PHP 5.7](https://badgen.net/badge/PHP/5.7/7884bf) ![License AGPLv3](https://badgen.net/badge/License/AGPLv3/552b55)
 
 This library allows to communicate with Robust or OpenSimulator instance with rest console enabled.
 
