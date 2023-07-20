@@ -1,6 +1,6 @@
 # OpenSimulator REST PHP library and command-line client
 
-![Version 1.0.0](https://badgen.net/badge/Version/1.0.0/999999) ![Stable 1.0.0](https://badgen.net/badge/Stable/1.0.0/00aa00) ![Requires PHP 5.7](https://badgen.net/badge/PHP/5.7/7884bf) ![License AGPLv3](https://badgen.net/badge/License/AGPLv3/552b55)
+![Version 1.0.2](https://badgen.net/badge/Version/1.0.2/999999) ![Stable 1.0.2](https://badgen.net/badge/Stable/1.0.2/00aa00) ![Requires PHP 5.7](https://badgen.net/badge/PHP/5.7/7884bf) ![License AGPLv3](https://badgen.net/badge/License/AGPLv3/552b55)
 
 This library can be used in another PHP project, or as a command-line client for OpenSimulator grids.
 
