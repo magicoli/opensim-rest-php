@@ -3,7 +3,7 @@
 /**
  * Build a standalone executable app.
  *
- * If creating archive is disabled by phar.readonly, unset it in php.ini or run
+ * If creating an archive is disabled by phar.readonly, unset it in php.ini or run
  *   php -d phar.readonly=off src/bin/build-phar.php
  *
 **/
@@ -14,6 +14,8 @@ $baseDir = dirname(dirname(__DIR__));
 
 // Create a new Phar archive
 $phar = new Phar($pharFile, 0, $pharFile);
+
+// Start buffering for Phar creation
 $phar->startBuffering();
 
 // Add files to the Phar archive
@@ -28,6 +30,10 @@ $stub = "#!/usr/bin/env php\n" . $defaultStub;
 // Set the custom stub
 $phar->setStub($stub);
 
+// Compress the Phar file using gzip compression
+$phar->compressFiles(Phar::GZ);
+
+// Stop buffering and write the Phar archive to disk
 $phar->stopBuffering();
 
 // Rename the Phar file to remove the extension

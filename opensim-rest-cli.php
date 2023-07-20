@@ -1,5 +1,20 @@
-#!/usr/bin/env php
 <?php
+
+/**
+ * OpenSimulator REST PHP command-line client
+ *
+ * This script provides a command-line interface to communicate with a Robust or OpenSimulator instance
+ * with REST console enabled.
+ *
+ * @package opensim-rest-php
+ * @category Command-line tools
+ * @version 1.0.3
+ * @license AGPLv3
+ * @link https://github.com/magicoli/opensim-rest-php
+ *
+ * Donate to support the project:
+ * @link https://magiiic.com/donate/project/?project=opensim-rest-php
+ */
 
 if (php_sapi_name() !== 'cli') {
     // Code to handle when the file is accessed from a web page
@@ -11,9 +26,12 @@ $base_dir = empty($base_dir) ? __DIR__ : $base_dir;
 require_once( $base_dir . '/class-rest.php');
 
 /**
-* Mimic WP essential functions mimic if in a standalone test environment.
-*/
-
+ * Retrieves the configuration from the INI file.
+ *
+ * @param string $defaultIniFile The path to the default INI file.
+ * @param string $additionalIni The path to an additional INI file.
+ * @return array|Error The configuration array if successful, or an Error object if an error occurred.
+ */
 function get_config($defaultIniFile, $additionalIni = '')
 {
   static $config = null;
@@ -45,6 +63,13 @@ function get_config($defaultIniFile, $additionalIni = '')
   return $config;
 }
 
+/**
+ * Processes the constants in the configuration array.
+ *
+ * @param array $config The configuration array.
+ * @param bool|array $section The current section being processed.
+ * @return array The processed configuration array.
+ */
 function process_constants( $config, $section = false) {
   if($section === false) $section = $config;
   foreach ($section as $key => $value) {
@@ -57,6 +82,13 @@ function process_constants( $config, $section = false) {
   return $section;
 }
 
+/**
+ * Replaces constants in a string with their corresponding values.
+ *
+ * @param array $config The configuration array.
+ * @param string $value The string containing the constants.
+ * @return string The string with replaced constants.
+ */
 function replace_constants($config, $value)
 {
   $found = preg_match_all('/\${([^\|]+)\|([^\}]+)}/', $value, $matches);
@@ -73,6 +105,13 @@ function replace_constants($config, $value)
   return $value;
 }
 
+/**
+ * Retrieves a value from the configuration array, case-insensitive.
+ *
+ * @param array $array The configuration array.
+ * @param string $key The key to retrieve.
+ * @return mixed The value if found, null otherwise.
+ */
 function array_get_case_insensitive($array, $key)
 {
   $key = strtolower($key);
@@ -89,6 +128,13 @@ function array_get_case_insensitive($array, $key)
   return null;
 }
 
+/**
+ * Retrieves an option from the configuration.
+ *
+ * @param string $option The option to retrieve.
+ * @param mixed $default The default value if the option is not found.
+ * @return mixed The option value if found, or the default value.
+ */
 function get_option($option, $default = null)
 {
   $scriptFilename = __FILE__;

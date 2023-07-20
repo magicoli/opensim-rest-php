@@ -1,10 +1,36 @@
 <?php
 
+/**
+ * OpenSimulator REST PHP library and command-line client
+ *
+ * This class provides functionality to communicate with a Robust or OpenSimulator instance
+ * with REST console enabled.
+ *
+ * @package opensim-rest-php
+ * @category Libraries
+ * @version 1.0.3
+ * @license AGPLv3
+ * @link https://github.com/magicoli/opensim-rest-php
+ *
+ * Donate to support the project:
+ * @link https://magiiic.com/donate/project/?project=opensim-rest-php
+ */
+
 class OpenSim_Rest {
   private $url;
   private $ch;
   private $sessionID;
 
+  /**
+   * OpenSim_Rest constructor.
+   *
+   * Initializes a new instance of the OpenSim_Rest class.
+   *
+   * @param array $args An array of arguments for configuring the REST connection.
+   *   - uri: The base URI for the REST connection.
+   *   - ConsoleUser: The username for authentication.
+   *   - ConsolePass: The password for authentication.
+   */
   public function __construct($args = [])
   {
 
@@ -35,6 +61,11 @@ class OpenSim_Rest {
     }
   }
 
+  /**
+   * OpenSim_Rest destructor.
+   *
+   * Cleans up any resources used by the OpenSim_Rest instance.
+   */
   public function __destruct()
   {
     if(!empty($this->ch)) {
@@ -45,6 +76,13 @@ class OpenSim_Rest {
     }
   }
 
+  /**
+   * Starts a session with the REST console.
+   *
+   * @param string $ConsoleUser The username for authentication.
+   * @param string $ConsolePass The password for authentication.
+   * @return string|Error The session ID if successful, or an Error object if an error occurred.
+   */
   private function startSession($ConsoleUser, $ConsolePass)
   {
     $startSessionUrl = $this->url . "/StartSession/";
@@ -78,6 +116,12 @@ class OpenSim_Rest {
     return $this->sessionID;
   }
 
+  /**
+   * Sends a command to the REST console.
+   *
+   * @param string $command The command to send.
+   * @return array|Error An array containing the lines of response if successful, or an Error object if an error occurred.
+   */
   public function sendCommand($command)
   {
     $sessionCommandUrl = $this->url . "/SessionCommand/";
@@ -157,6 +201,11 @@ class OpenSim_Rest {
     return $lines;
   }
 
+  /**
+   * Closes the session with the REST console.
+   *
+   * @return string|Error The response if successful, or an Error object if an error occurred.
+   */
   private function closeSession()
   {
     $closeSessionUrl = $this->url . "/CloseSession/";
@@ -179,6 +228,12 @@ class OpenSim_Rest {
   }
 }
 
+/**
+ * Creates a new OpenSim_Rest session.
+ *
+ * @param array $args An array of arguments for configuring the REST connection.
+ * @return OpenSim_Rest|Error An instance of the OpenSim_Rest class if successful, or an Error object if an error occurred.
+ */
 function opensim_rest_session($args) {
   $rest = new OpenSim_Rest($args);
 
@@ -189,6 +244,12 @@ function opensim_rest_session($args) {
   return $rest;
 }
 
+/**
+ * Checks if a given thing is an OpenSim_Rest error.
+ *
+ * @param mixed $thing The thing to check.
+ * @return bool Returns true if the thing is an OpenSim_Rest error, false otherwise.
+ */
 function is_opensim_rest_error($thing)
 {
   if ($thing instanceof Error) return true;
