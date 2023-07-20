@@ -2,9 +2,9 @@
 
 ![Version 1.0.2](https://badgen.net/badge/Version/1.0.2/999999) ![Stable 1.0.2](https://badgen.net/badge/Stable/1.0.2/00aa00) ![Requires PHP 5.7](https://badgen.net/badge/PHP/5.7/7884bf) ![License AGPLv3](https://badgen.net/badge/License/AGPLv3/552b55)
 
-This library can be used in another PHP project, or as a command-line client for OpenSimulator grids.
+This library allows to communicate with Robust or OpenSimulator instance with rest console enabled.
 
-It allows to communicate with Robust instance started with -console rest arguments.
+It can be used inside a PHP project, or as a command-line client for OpenSimulator grids.
 
 Available commands can be found here: <http://opensimulator.org/wiki/Server_Commands>
 
@@ -26,10 +26,11 @@ You must choose a specific port, not already used by another service. It is good
 
 ## Command-line client
 
+[Download the executable](https://raw.githubusercontent.com/magicoli/opensim-rest-php/master/opensim-rest-cli) from this repository, make sure `opensim-rest-cli` is executable and move it to /usr/local/bin/.
+
 ```bash
-git clone https://github.com/magicoli/opensim-rest-php.git
-sudo mv opensim-rest-php /opt/opensim-rest-php
-sudo ln -s /opt/opensim-rest-php/opensim-rest-cli /usr/local/bin/opensim-rest-cli
+chmod +x /path/to/opensim-rest-cli
+sudo mv /path/to/opensim-rest-cli /usr/local/bin/opensim-rest-cli
 ```
 
 You can run commands like
@@ -48,7 +49,7 @@ opensim-rest-cli show regions
 
 ## PHP class
 
-Only copy `class-rest.php` file in your project or install with composer. **Do not keep `opensim-rest-cli` or `opensim-rest-cli.php` in a production environment**.
+[Download class-rest.php file](https://raw.githubusercontent.com/magicoli/opensim-rest-php/master/class-rest.php) in your project or install with composer. **Do not keep `opensim-rest-cli` or `opensim-rest-cli.php` inside a public website**.
 
 ```bash
 composer require --dev https://github.com/magicoli/opensim-rest-php
