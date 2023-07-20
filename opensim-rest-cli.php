@@ -1,7 +1,14 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 <?php
 
-require_once(dirname(realpath(__FILE__)) . '/class-rest.php');
+if (php_sapi_name() !== 'cli') {
+    // Code to handle when the file is accessed from a web page
+    die('This script can only be run from the command line.');
+}
+
+$base_dir = dirname(realpath(__FILE__) );
+$base_dir = empty($base_dir) ? __DIR__ : $base_dir;
+require_once( $base_dir . '/class-rest.php');
 
 /**
 * Mimic WP essential functions mimic if in a standalone test environment.

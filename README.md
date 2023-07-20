@@ -29,26 +29,26 @@ You must choose a specific port, not already used by another service. It is good
 ```bash
 git clone https://github.com/magicoli/opensim-rest-php.git
 sudo mv opensim-rest-php /opt/opensim-rest-php
-sudo ln -s /opt/opensim-rest-php/opensim-rest-cli.php /usr/local/bin/rest-cli
+sudo ln -s /opt/opensim-rest-php/opensim-rest-cli /usr/local/bin/opensim-rest-cli
 ```
 
 You can run commands like
 
 ```bash
-rest-cli /path/to/Robust.ini show info
-rest-cli /path/to/Robust.ini show regions
+opensim-rest-cli /path/to/Robust.ini show info
+opensim-rest-cli /path/to/Robust.ini show regions
 ```
 
-If you save the credentials in ~/.rest-cli.ini, you can skip the Robust.ini argument.
+If you save the credentials in ~/.opensim-rest-cli.ini, you can skip the Robust.ini argument.
 
 ```bash
-rest-cli show info
-rest-cli show regions
+opensim-rest-cli show info
+opensim-rest-cli show regions
 ```
 
 ## PHP class
 
-Only copy `class-rest.php` file in your project or install with composer. **Do not keep `opensim-rest-cli.php` in a production environment**.
+Only copy `class-rest.php` file in your project or install with composer. **Do not keep `opensim-rest-cli` or `opensim-rest-cli.php` in a production environment**.
 
 ```bash
 composer require --dev https://github.com/magicoli/opensim-rest-php
