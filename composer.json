@@ -1,0 +1,13 @@
+{
+    "name": "magicoli/opensim-rest-php",
+    "description": "OpenSimulator REST PHP library and command-line client",
+    "type": "library",
+    "license": "AGPL-v3",
+    "authors": [
+        {
+            "name": "Olivier van Helden",
+            "email": "olivier@van-helden.net"
+        }
+    ],
+    "require": {}
+}
