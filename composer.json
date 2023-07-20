@@ -1,15 +1,21 @@
 {
-    "name": "magicoli/opensim-rest-php",
-    "description": "OpenSimulator REST PHP library and command-line client",
-    "type": "library",
-    "license": "AGPL-3.0-or-later",
-    "authors": [
-        {
-            "name": "Olivier van Helden",
-            "email": "olivier@van-helden.net"
-        }
-    ],
-    "require-dev": {
-        "clue/phar-composer": "^1.4"
+  "name": "magicoli/opensim-rest-php",
+  "description": "OpenSimulator REST PHP library and command-line client",
+  "type": "library",
+  "license": "AGPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Olivier van Helden",
+      "email": "olivier@van-helden.net"
     }
+  ],
+  "require-dev": {
+    "clue/phar-composer": "^1.4",
+    "robo/tasks": "^4.0"
+  },
+  "scripts": {
+    "bump-version": [
+      "robo bump:version"
+    ]
+  }
 }
