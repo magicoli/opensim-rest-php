@@ -11,11 +11,9 @@
   ],
   "require-dev": {
     "clue/phar-composer": "^1.4",
-    "robo/tasks": "^4.0"
+    "magicoli/php-bump-library": "^1.0"
   },
   "scripts": {
-    "bump-version": [
-      "robo bump:version"
-    ]
+    "bump-version": "robo --load-from=vendor/magicoli/php-bump-library/RoboFile.php bump:version"
   }
 }
