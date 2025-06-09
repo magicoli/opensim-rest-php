@@ -9,6 +9,9 @@
       "email": "olivier@van-helden.net"
     }
   ],
+  "autoload": {
+    "files": ["class-rest.php"]
+  },
   "require-dev": {
     "clue/phar-composer": "^1.4",
     "magicoli/php-bump-library": "^1.0"

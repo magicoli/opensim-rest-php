@@ -61,18 +61,6 @@ composer require magicoli/opensim-rest-php
 Then in your PHP code:
 ```php
 require_once 'vendor/autoload.php';
-// Use the class directly
-```
-
-### Method 2: Copy single file (simple but no updates)
-
-```bash
-composer require --dev magicoli/opensim-rest-php
-cp vendor/magicoli/opensim-rest-php/class-rest.php lib/
-```
-
-```php
-require_once dirname(__FILE__) . '/opensim-rest/class-rest.php';
 
 $session = opensim_rest_session(
   array(
@@ -91,7 +79,7 @@ if ( is_opensim_rest_error($session) ) {
 # Return value: an array containing the line(s) of response or a PHP Error
 ```
 
-### Method 3: Git Submodule + sparse (recommended for integrated projects)
+### Method 2: Git Submodule + sparse (recommended for integrated projects)
 
 **Setting sparse config is critical** to avoid executables being accessible on public website.
 
@@ -126,7 +114,7 @@ require_once dirname(__FILE__) . '/opensim-rest/class-rest.php';
 // Same usage as above
 ```
 
-### Method 4: Manual download (not recommended)
+### Method 3: Manual download (not recommended)
 
 You won't get updates...
 
