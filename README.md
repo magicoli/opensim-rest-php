@@ -1,6 +1,9 @@
 # OpenSimulator REST PHP library and command-line client
 
-![Version 1.0.5](https://badgen.net/badge/Version/1.0.5/999999) ![Stable 1.0.5](https://badgen.net/badge/Stable/1.0.5/00aa00) ![Requires PHP 5.7](https://badgen.net/badge/PHP/5.7/7884bf) ![License AGPLv3](https://badgen.net/badge/License/AGPLv3/552b55)
+![Version 1.0.5](https://badgen.net/badge/Version/1.0.5/999999)
+![Stable 1.0.5](https://badgen.net/badge/Stable/1.0.5/00aa00)
+![Requires PHP 7.4](https://badgen.net/badge/PHP/7.4+/7884bf)
+![License AGPLv3](https://badgen.net/badge/License/AGPLv3/552b55)
 
 This library allows to communicate with Robust or OpenSimulator instance with rest console enabled.
 
@@ -49,23 +52,33 @@ opensim-rest-cli show regions
 
 ## PHP class
 
-[Download class-rest.php file](https://raw.githubusercontent.com/magicoli/opensim-rest-php/master/class-rest.php) in your project or install with composer. **Do not keep `opensim-rest-cli` or `opensim-rest-cli.php` inside a public website**.
+### Method 1: Install with composer (recommended for standalone projects)
 
 ```bash
-composer require --dev https://github.com/magicoli/opensim-rest-php
-cp magicoli/opensim-rest-php/class-rest.php lib/
+composer require magicoli/opensim-rest-php
 ```
 
-In your project PHP:
+Then in your PHP code:
+```php
+require_once 'vendor/autoload.php';
+// Use the class directly
+```
+
+### Method 2: Copy single file (simple but no updates)
+
+```bash
+composer require --dev magicoli/opensim-rest-php
+cp vendor/magicoli/opensim-rest-php/class-rest.php lib/
+```
 
 ```php
-require(dirname(__FILE__) . '/lib/class-rest.php');
+require_once dirname(__FILE__) . '/opensim-rest/class-rest.php';
 
 $session = opensim_rest_session(
   array(
     'uri' => "yourgrid.org:8009",
     'ConsoleUser' => 'yourConsoleUsername',
-    'ConsolePass' => 'yourConolePassword',
+    'ConsolePass' => 'yourConsolePassword',
   )
 );
 
@@ -77,3 +90,45 @@ if ( is_opensim_rest_error($session) ) {
 
 # Return value: an array containing the line(s) of response or a PHP Error
 ```
+
+### Method 3: Git Submodule + sparse (recommended for integrated projects)
+
+**Setting sparse config is critical** to avoid executables being accessible on public website.
+
+From your project directory:
+
+```bash
+git submodule add https://github.com/magicoli/opensim-rest-php.git opensim-rest
+cd opensim-rest
+git config core.sparseCheckout true
+
+echo '*' > $(git rev-parse --git-dir)/info/sparse-checkout
+echo '!bin/*' >> $(git rev-parse --git-dir)/info/sparse-checkout
+echo '!dev/*' >> $(git rev-parse --git-dir)/info/sparse-checkout
+echo '!opensim-rest-cli.php' >> $(git rev-parse --git-dir)/info/sparse-checkout
+echo '!composer.lock' >> $(git rev-parse --git-dir)/info/sparse-checkout
+
+git read-tree -m -u HEAD
+```
+
+This will give you only the files you need:
+```
+opensim-rest/
+├── class-rest.php
+├── composer.json
+├── LICENSE
+└── README.md
+```
+
+Then in your PHP code:
+```php
+require_once dirname(__FILE__) . '/opensim-rest/class-rest.php';
+// Same usage as above
+```
+
+### Method 4: Manual download (not recommended)
+
+You won't get updates...
+
+[Download class-rest.php file](https://raw.githubusercontent.com/magicoli/opensim-rest-php/master/class-rest.php) in your project or 
+
