@@ -1,7 +1,7 @@
 # OpenSimulator REST PHP library and command-line client
 
-![Version 1.0.5](https://badgen.net/badge/Version/1.0.5/999999)
-![Stable 1.0.5](https://badgen.net/badge/Stable/1.0.5/00aa00)
+![Version 1.0.6](https://badgen.net/badge/Version/1.0.6/999999)
+![Stable 1.0.6](https://badgen.net/badge/Stable/1.0.6/00aa00)
 ![Requires PHP 7.4](https://badgen.net/badge/PHP/7.4+/7884bf)
 ![License AGPLv3](https://badgen.net/badge/License/AGPLv3/552b55)
 
